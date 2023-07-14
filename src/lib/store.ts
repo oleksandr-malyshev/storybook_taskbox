@@ -3,13 +3,8 @@ import {
   createSlice,
   createAsyncThunk,
 } from '@reduxjs/toolkit';
+import { defaultTasks } from './otherdata';
 
-const defaultTasks = [
-  { id: '1', title: 'Something', state: 'TASK_INBOX' },
-  { id: '2', title: 'Something more', state: 'TASK_INBOX' },
-  { id: '3', title: 'Something else', state: 'TASK_INBOX' },
-  { id: '4', title: 'Something again', state: 'TASK_INBOX' },
-];
 const TaskBoxData = {
   tasks: defaultTasks,
   status: 'idle',
@@ -56,7 +51,7 @@ const TasksSlice = createSlice({
       })
       .addCase(fetchTasks.rejected, (state) => {
         state.status = 'failed';
-        state.error = 'Something went wrong';
+        state.error = 'Something went wrong' as any;
         state.tasks = [];
       });
   },
